@@ -2,7 +2,7 @@ FROM node:latest
 
 WORKDIR /usr/src/node-app
 
-EXPOSE 8081
+EXPOSE 51005
 
 COPY /BackendDemoProject/package*.json ./
 
