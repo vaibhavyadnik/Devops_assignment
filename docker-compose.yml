@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  nodejs:
+    build: .
+    restart: always
+    container_name: nodejs
+    ports:
+      - 8081:8081
+    working_dir: /usr/src/node-app
+    depends_on:
+      - mysql
+    restart: always
+  
+  mongo:
+    image: mongo
+    container_name: mongo-node
+    volumes:
+      - $HOME/data/node-mongo-data:/data/db
+      - $HOME/data/node-mongo-bkp:/data/bkp
+    restart: always
+  
+    mysql:
+      image: mysql
+      container_name: mysql-node
+      volumes:
+        - $HOME/data/node-sql-data:/data/db
+        - $HOME/data/node-sql-bkp:/data/bkp
+      restart: always
